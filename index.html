@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table mendeleiv</title>
+</head>
+<style>
+    html {
+        background-repeat: no-repeat;
+        background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?t=st=1672660242~exp=1672660842~hmac=5f03528…);
+        background-size: cover;
+    }
+    
+    body {
+        font-family: Arial;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        /* --- Container --- */
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .dot {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    
+    span {
+        margin-right: 20px;
+        margin-bottom: 8px;
+    }
+    
+    .dot-blue {
+        border: 2px solid rgb(71, 135, 240);
+        background-color: rgb(39, 243, 243);
+    }
+    
+    .dot-red {
+        border: 2px solid red;
+        background-color: rgb(244, 200, 176);
+    }
+    
+    .dot-purple {
+        border: 2px solid rgb(91, 26, 130);
+        background-color: rgb(171, 32, 252);
+    }
+    
+    .dot-green {
+        border: 2px solid rgb(19, 91, 11);
+        background-color: rgb(28, 168, 13);
+    }
+    
+    .items {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .row {
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-around;
+        margin-top: 3%;
+    }
+    
+    .periodic {
+        position: relative;
+        height: 200px;
+        margin-right: -1px;
+        text-shadow: none;
+    }
+    
+    .periodic-row {
+        clear: both;
+        height: 10%;
+    }
+    
+    .cell {
+        float: left;
+        position: relative;
+        width: 5.41%;
+        height: 100%;
+    }
+    
+    .space {
+        width: 2.5%;
+    }
+    
+    .element {
+        position: absolute;
+        border-radius: 5px;
+        top: 0;
+        left: 0;
+        bottom: 1px;
+        right: 1px;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        text-align: center;
+        cursor: default;
+        /* pointer-events: none; */
+        -webkit-transition: all 200ms ease;
+        transition: all 200ms ease;
+        background-color: rgb(201, 200, 230);
+    }
+    
+    .at_num,
+    .at_details {
+        position: absolute;
+        font-size: 4px;
+        color: rgba(12, 57, 141, 0.9);
+        opacity: 0;
+    }
+    
+    .at_num {
+        top: 4px;
+        left: 5px;
+    }
+    
+    .symbol {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        right: 0px;
+        margin-top: -4px;
+        font-size: 9px;
+        line-height: 1;
+        height: 9px;
+        color: rgba(12, 57, 141, 0.9);
+        font-weight: bold;
+    }
+    
+    .at_details {
+        bottom: 4px;
+        left: 0px;
+        right: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: rgba(12, 57, 141, 0.9);
+    }
+    /* ----------------- Start Green Element  --------------- */
+    /* ------------------------------------------------------ */
+    
+    .periodic-row:nth-child(3) .cell:nth-child(n+14) .element,
+    .periodic-row:nth-child(4) .cell:nth-child(n+14) .element,
+    .periodic-row:nth-child(5) .cell:nth-child(n+14) .element,
+    .periodic-row:nth-child(5) .cell:nth-child(n+15) .element,
+    .periodic-row:nth-child(6) .cell:nth-child(n+14) .element {
+        background-color: #C5E7D5;
+    }
+    
+    .periodic-row:nth-child(3) .cell:nth-child(n+14) .at_num,
+    .periodic-row:nth-child(4) .cell:nth-child(n+14) .at_num,
+    .periodic-row:nth-child(5) .cell:nth-child(n+14) .at_num,
+    .periodic-row:nth-child(5) .cell:nth-child(n+15) .at_num,
+    .periodic-row:nth-child(6) .cell:nth-child(n+14) .at_num {
+        color: #021826;
+    }
+    
+    .periodic-row:nth-child(3) .cell:nth-child(n+14) .at_details,
+    .periodic-row:nth-child(4) .cell:nth-child(n+14) .at_details,
+    .periodic-row:nth-child(5) .cell:nth-child(n+14) .at_details,
+    .periodic-row:nth-child(5) .cell:nth-child(n+15) .at_details,
+    .periodic-row:nth-child(6) .cell:nth-child(n+14) .at_details {
+        color: #021826;
+    }
+    
+    .periodic-row:nth-child(3) .cell:nth-child(n+14) .symbol,
+    .periodic-row:nth-child(4) .cell:nth-child(n+14) .symbol,
+    .periodic-row:nth-child(5) .cell:nth-child(n+14) .symbol,
+    .periodic-row:nth-child(5) .cell:nth-child(n+15) .symbol,
+    .periodic-row:nth-child(6) .cell:nth-child(n+14) .symbol {
+        color: #021826;
+    }
+    /* ------------------ End Green Element ---------------- */
+    /* ------------------------------------------------------ */
+    /* ----------------- Start Yellow Element --------------- */
+    /* ------------------------------------------------------ */
+    
+    .periodic-row:nth-child(2) .cell:nth-child(n+14) .element,
+    .periodic-row:nth-child(3) .cell:nth-child(n+15) .element,
+    .periodic-row:nth-child(4) .cell:nth-child(n+15) .element,
+    .periodic-row:nth-child(5) .cell:nth-child(n+16) .element {
+        background-color: rgba(236, 223, 48, 0.568);
+    }
+    
+    .periodic-row:nth-child(2) .cell:nth-child(n+13) .at_num,
+    .periodic-row:nth-child(3) .cell:nth-child(n+15) .at_num,
+    .periodic-row:nth-child(4) .cell:nth-child(n+15) .at_num,
+    .periodic-row:nth-child(5) .cell:nth-child(n+16) .at_num {
+        color: rgba(104, 89, 6, 0.63);
+    }
+    
+    .periodic-row:nth-child(2) .cell:nth-child(n+13) .at_details,
+    .periodic-row:nth-child(3) .cell:nth-child(n+15) .at_details,
+    .periodic-row:nth-child(4) .cell:nth-child(n+15) .at_details,
+    .periodic-row:nth-child(5) .cell:nth-child(n+16) .at_details {
+        color: rgba(104, 89, 6, 0.63);
+    }
+    
+    .periodic-row:nth-child(2) .cell:nth-child(n+13) .symbol,
+    .periodic-row:nth-child(3) .cell:nth-child(n+15) .symbol,
+    .periodic-row:nth-child(4) .cell:nth-child(n+15) .symbol,
+    .periodic-row:nth-child(5) .cell:nth-child(n+16) .symbol {
+        color: rgba(104, 89, 6, 0.63);
+    }
+    /* ------------------------------------------------------ */
+    /* ------------------------------------------------------ */
+    /* ----------------- Start Red Element  ---------------- */
+    /* ------------------------------------------------------ */
+    /* ---- Details ----- */
+    
+    .cell:nth-child(-n + 2) .at_details,
+    .cell:nth-child(n + 19) .at_details {
+        color: rgb(238, 34, 61);
+    }
+    /* ---- Num ----- */
+    
+    .cell:nth-child(-n + 2) .at_num,
+    .cell:nth-child(n + 19) .at_num {
+        color: rgb(238, 34, 61);
+    }
+    /* ---- Symbol ----- */
+    
+    .cell:nth-child(-n + 2) .symbol,
+    .cell:nth-child(n + 19) .symbol {
+        color: rgb(238, 34, 61);
+    }
+    /* ---- Element ----- */
+    
+    .cell:nth-child(-n + 2) .element,
+    .cell:nth-child(n + 19) .element {
+        background-color: rgb(247, 181, 214);
+    }
+    /* ------------------------------------------------------ */
+    /* ------------------------------------------------------ */
+    /* ----------------- Start blue Element  ---------------- */
+    /* ------------------------------------------------------ */
+    
+    .cell:nth-child(1) .at_details,
+    .periodic-row:nth-child(2) .cell:nth-child(n + 15) .at_details,
+    .periodic-row:nth-child(3) .cell:nth-child(n + 16) .at_details,
+    .periodic-row:nth-child(4) .cell:nth-child(n + 17) .at_details,
+    .periodic-row:nth-child(5) .cell:nth-child(n + 18) .at_details {
+        color: rgb(19, 48, 143);
+    }
+    
+    .cell:nth-child(1) .at_num,
+    .periodic-row:nth-child(2) .cell:nth-child(n + 15) .at_num,
+    .periodic-row:nth-child(3) .cell:nth-child(n + 16) .at_num,
+    .periodic-row:nth-child(4) .cell:nth-child(n + 17) .at_num,
+    .periodic-row:nth-child(5) .cell:nth-child(n + 18) .at_num {
+        color: rgb(19, 48, 143);
+    }
+    
+    .cell:nth-child(1) .symbol,
+    .periodic-row:nth-child(2) .cell:nth-child(n + 15) .symbol,
+    .periodic-row:nth-child(3) .cell:nth-child(n + 16) .symbol,
+    .periodic-row:nth-child(4) .cell:nth-child(n + 17) .symbol,
+    .periodic-row:nth-child(5) .cell:nth-child(n + 18) .symbol {
+        color: rgb(19, 48, 143);
+    }
+    
+    .cell:nth-child(1) .element,
+    .periodic-row:nth-child(2) .cell:nth-child(n + 15) .element,
+    .periodic-row:nth-child(3) .cell:nth-child(n + 16) .element,
+    .periodic-row:nth-child(4) .cell:nth-child(n + 17) .element,
+    .periodic-row:nth-child(5) .cell:nth-child(n + 18) .element {
+        background-color: #ccedf9;
+    }
+    /* ------------------------------------------------------ */
+    /* ------------------------------------------------------ */
+    /* ------------- Start blue & red Element  -------------- */
+    /* ------------------------------------------------------ */
+    
+    .periodic-row:nth-child(-n + 6) .cell:nth-child(19) .at_details {
+        color: rgb(238, 34, 136);
+    }
+    
+    .periodic-row:nth-child(-n + 6) .cell:nth-child(19) .at_num {
+        color: rgb(238, 34, 136);
+    }
+    
+    .periodic-row:nth-child(-n + 6) .cell:nth-child(19) .symbol {
+        color: rgb(238, 34, 136);
+    }
+    
+    .periodic-row:nth-child(-n + 6) .cell:nth-child(19) .element {
+        background-color: rgb(247, 181, 214);
+    }
+    
+    .periodic-row:nth-child(9) .cell:nth-child(n+3) .at_details,
+    .periodic-row:nth-child(10) .cell:nth-child(n+3) .at_details {
+        color: rgb(13, 8, 66);
+    }
+    
+    .periodic-row:nth-child(9) .cell:nth-child(n+3) .at_num,
+    .periodic-row:nth-child(10) .cell:nth-child(n+3) .at_num {
+        color: rgb(13, 8, 66);
+    }
+    
+    .periodic-row:nth-child(9) .cell:nth-child(n+3) .symbol,
+    .periodic-row:nth-child(10) .cell:nth-child(n+3) .symbol {
+        color: rgb(13, 8, 66);
+    }
+    
+    .periodic-row:nth-child(9) .cell:nth-child(n+3) .element {
+        background-color: #93f8f8;
+    }
+    /* ------------- Start grey Element  -------------- */
+    /* ------------------------------------------ */
+    
+    .periodic-row:nth-child(7) .cell:nth-child(n+10) .element {
+        background-color: rgba(179, 175, 175, 0.363);
+    }
+    
+    .periodic-row:nth-child(2) .cell:nth-child(n+13) .at_details,
+    .periodic-row:nth-child(7) .cell:nth-child(n+10) .at_details {
+        color: rgb(61, 61, 61);
+    }
+    
+    .periodic-row:nth-child(7) .cell:nth-child(n+9) .at_num,
+    .periodic-row:nth-child(7) .cell:nth-child(n+10) .at_num {
+        color: rgb(61, 61, 61);
+    }
+    
+    .periodic-row:nth-child(7) .cell:nth-child(n+10) .symbol {
+        color: rgb(61, 61, 61);
+    }
+    /* ------------------------------------------------------ */
+    /* ------------------------------------------------------ */
+    /* ------------- Start Orange Element  -------------- */
+    /* -------------------------------------------------- */
+    
+    .periodic-row:nth-child(10) .cell:nth-child(n+3) .element {
+        background-color: #fbc490;
+    }
+    
+    .periodic-row:nth-child(10) .cell:nth-child(n+3) .at_num {
+        color: rgb(233, 108, 5);
+    }
+    
+    .periodic-row:nth-child(10) .cell:nth-child(n+3) .symbol {
+        color: rgb(233, 108, 5);
+    }
+    
+    .periodic-row:nth-child(10) .cell:nth-child(n+3) .at_details {
+        color: rgb(233, 108, 5);
+    }
+    /* ------------------------------------------------------ */
+    /* ------------------------------------------------------ */
+    
+    .cell:nth-child(1) .element {
+        -webkit-transform-origin: 0 50%;
+        -ms-transform-origin: 0 50%;
+        transform-origin: 0 50%;
+    }
+    
+    .cell:nth-child(18) .element {
+        -webkit-transform-origin: 100% 50%;
+        -ms-transform-origin: 100% 50%;
+        transform-origin: 100% 50%;
+    }
+    
+    .periodic-row:nth-child(10) .cell .element {
+        -webkit-transform-origin: 50% 100%;
+        -ms-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+    }
+    
+    .periodic-row:nth-child(1) .cell:nth-child(1) .element {
+        -webkit-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+        transform-origin: 0 0;
+    }
+    
+    .periodic-row:nth-child(1) .cell:nth-child(18) .element {
+        -webkit-transform-origin: 100% 0;
+        -ms-transform-origin: 100% 0;
+        transform-origin: 100% 0;
+    }
+    
+    .periodic-row:nth-child(10) .cell:nth-child(18) .element {
+        -webkit-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    /* -------------  *** Responsive ***  -------------- */
+    /* -------------------------------------------------- */
+    
+    @media (min-width: 600px) {
+        /* body {
+            background-color: rgb(10, 10, 10)!important;
+        } */
+        .row {
+            display: flex !important;
+            flex-direction: column!important;
+        }
+        .periodic {
+            height: 460px;
+            margin-right: -2px;
+        }
+        .element {
+            right: 2px;
+            bottom: 2px;
+        }
+        .at_num,
+        .at_details {
+            font-size: 4px;
+            opacity: 1;
+        }
+        .symbol {
+            margin-top: -17px;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 30px;
+            height: 30px;
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+        }
+    }
+    
+    @media (min-width: 800px) {
+        /* body {
+            background-color: yellow!important;
+        } */
+        .row {
+            display: flex !important;
+            flex-direction: column!important;
+        }
+        .row {
+            display: flex;
+            flex-direction: column;
+        }
+        .periodic {
+            height: 540px;
+        }
+        .symbol {
+            font-size: 20px;
+        }
+    }
+    
+    @media (min-width: 992px) {
+        /* body {
+            background-color: red!important;
+        } */
+        .row {
+            display: flex !important;
+            flex-direction: row!important;
+        }
+        .periodic {
+            height: 680px;
+        }
+        .at_num,
+        .at_details {
+            font-size: 5px;
+        }
+        .symbol {
+            font-size: 24px;
+        }
+    }
+    
+    @media (min-width: 1200px) {
+        /* body {
+            background-color: blue!important;
+        } */
+        .periodic {
+            height: 800px;
+        }
+        .at_num {
+            font-size: 14px;
+        }
+        .at_details {
+            font-size: 12px;
+        }
+        .symbol {
+            font-size: 25px;
+        }
+    }
+</style>
+
+<body>
+    <!-- ---- title ----- -->
+    <div>
+        <h1> Periodic Table</h1>
+    </div>
+    <!-- ---- table ----- -->
+    <div class="periodic">
+        <div class="periodic-row">
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">1</div>
+                    <div class="symbol" contenteditable="true">H</div>
+                    <div class="at_details">hydrogen</div>
+                </div>
+            </div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="space cell">
+
+            </div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">2</div>
+                    <div class="symbol" contenteditable="true">He</div>
+                    <div class="at_details">helium</div>
+                </div>
+            </div>
+        </div>
+        <div class="periodic-row">
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">3</div>
+                    <div class="symbol">Li</div>
+                    <div class="at_details">lithium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">4</div>
+                    <div class="symbol" contenteditable="true">Be</div>
+                    <div class="at_details">beryllium</div>
+                </div>
+            </div>
+            <div class="cell"></div>
+            <div class="space cell">
+
+            </div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">5</div>
+                    <div class="symbol" contenteditable="true">B</div>
+                    <div class="at_details">boron</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">6</div>
+                    <div class="symbol" contenteditable="true">C</div>
+                    <div class="at_details">carbon</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">7</div>
+                    <div class="symbol" contenteditable="true">N</div>
+                    <div class="at_details">nidivogen</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">8</div>
+                    <div class="symbol" contenteditable="true">O</div>
+                    <div class="at_details">oxygen</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">9</div>
+                    <div class="symbol" contenteditable="true">F</div>
+                    <div class="at_details">fluorine</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">10</div>
+                    <div class="symbol" contenteditable="true">Ne</div>
+                    <div class="at_details">neon</div>
+                </div>
+            </div>
+        </div>
+        <div class="periodic-row">
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">11</div>
+                    <div class="symbol" contenteditable="true">Na</div>
+                    <div class="at_details">sodium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">12</div>
+                    <div class="symbol" contenteditable="true">Mg</div>
+                    <div class="at_details">magnesium</div>
+                </div>
+            </div>
+            <div class="cell"></div>
+            <div class="space cell">
+
+            </div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">13</div>
+                    <div class="symbol" contenteditable="true">Al</div>
+                    <div class="at_details">aluminum</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">14</div>
+                    <div class="symbol" contenteditable="true">Si</div>
+                    <div class="at_details">silicon</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">15</div>
+                    <div class="symbol" contenteditable="true">P</div>
+                    <div class="at_details">phosphorus</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">16</div>
+                    <div class="symbol" contenteditable="true">S</div>
+                    <div class="at_details">sulfur</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">17</div>
+                    <div class="symbol" contenteditable="true">Cl</div>
+                    <div class="at_details">chlorine</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">18</div>
+                    <div class="symbol" contenteditable="true">Ar</div>
+                    <div class="at_details">argon</div>
+                </div>
+            </div>
+        </div>
+        <div class="periodic-row">
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">19</div>
+                    <div class="symbol" contenteditable="true">K</div>
+                    <div class="at_details">potassium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">20</div>
+                    <div class="symbol" contenteditable="true">Ca</div>
+                    <div class="at_details">calcium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">21</div>
+                    <div class="symbol" contenteditable="true">Sc</div>
+                    <div class="at_details">scandium</div>
+                </div>
+            </div>
+            <div class="space cell">
+
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">22</div>
+                    <div class="symbol" contenteditable="true">Ti</div>
+                    <div class="at_details">titanium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">23</div>
+                    <div class="symbol">V</div>
+                    <div class="at_details">vanadium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">24</div>
+                    <div class="symbol" contenteditable="true">Cr</div>
+                    <div class="at_details">chromium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">25</div>
+                    <div class="symbol" contenteditable="true">Mn</div>
+                    <div class="at_details">manganese</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">26</div>
+                    <div class="symbol" contenteditable="true">Fe</div>
+                    <div class="at_details">iron</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">27</div>
+                    <div class="symbol" contenteditable="true">Co</div>
+                    <div class="at_details">cobalt</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">28</div>
+                    <div class="symbol" contenteditable="true">Ni</div>
+                    <div class="at_details">nickel</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">29</div>
+                    <div class="symbol" contenteditable="true">Cu</div>
+                    <div class="at_details">copper</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">30</div>
+                    <div class="symbol" contenteditable="true">Zn</div>
+                    <div class="at_details">zinc</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">31</div>
+                    <div class="symbol" contenteditable="true">Ga</div>
+                    <div class="at_details">gallium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">32</div>
+                    <div class="symbol" contenteditable="true">Ge</div>
+                    <div class="at_details">germanium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">33</div>
+                    <div class="symbol" contenteditable="true">As</div>
+                    <div class="at_details">arsenic</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">34</div>
+                    <div class="symbol" contenteditable="true">Se</div>
+                    <div class="at_details">selenium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">35</div>
+                    <div class="symbol" contenteditable="true">Br</div>
+                    <div class="at_details">bromine</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">36</div>
+                    <div class="symbol" contenteditable="true">Kr</div>
+                    <div class="at_details">krypton</div>
+                </div>
+            </div>
+        </div>
+        <div class="periodic-row">
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">37</div>
+                    <div class="symbol" contenteditable="true">Rb</div>
+                    <div class="at_details">rubidium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">38</div>
+                    <div class="symbol" contenteditable="true">Sr</div>
+                    <div class="at_details">sdivontium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">39</div>
+                    <div class="symbol" contenteditable="true">Y</div>
+                    <div class="at_details">ytdivium</div>
+                </div>
+            </div>
+            <div class="space cell">
+
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">40</div>
+                    <div class="symbol" contenteditable="true">Zr</div>
+                    <div class="at_details">zirconium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">41</div>
+                    <div class="symbol" contenteditable="true">Nb</div>
+                    <div class="at_details">niobium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">42</div>
+                    <div class="symbol" contenteditable="true">Mo</div>
+                    <div class="at_details">molybdenum</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">43</div>
+                    <div class="symbol" contenteditable="true">Tc</div>
+                    <div class="at_details">technetium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">44</div>
+                    <div class="symbol" contenteditable="true">Ru</div>
+                    <div class="at_details">ruthenium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">45</div>
+                    <div class="symbol" contenteditable="true">Rh</div>
+                    <div class="at_details">rhodium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">46</div>
+                    <div class="symbol" contenteditable="true">Pd</div>
+                    <div class="at_details">palladium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">47</div>
+                    <div class="symbol" contenteditable="true">Ag</div>
+                    <div class="at_details">silver</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">48</div>
+                    <div class="symbol" contenteditable="true">Cd</div>
+                    <div class="at_details">cadmium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">49</div>
+                    <div class="symbol" contenteditable="true">In</div>
+                    <div class="at_details">indium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">50</div>
+                    <div class="symbol" contenteditable="true">Sn</div>
+                    <div class="at_details">tin</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">51</div>
+                    <div class="symbol" contenteditable="true">Sb</div>
+                    <div class="at_details">antimony</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">52</div>
+                    <div class="symbol" contenteditable="true">Te</div>
+                    <div class="at_details">tellurium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">53</div>
+                    <div class="symbol" contenteditable="true">I</div>
+                    <div class="at_details">iodine</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">54</div>
+                    <div class="symbol" contenteditable="true">Xe</div>
+                    <div class="at_details">xenon</div>
+                </div>
+            </div>
+        </div>
+        <div class="periodic-row">
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">55</div>
+                    <div class="symbol" contenteditable="true">Cs</div>
+                    <div class="at_details">cesium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">56</div>
+                    <div class="symbol" contenteditable="true">Ba</div>
+                    <div class="at_details">barium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">57</div>
+                    <div class="symbol" contenteditable="true">La</div>
+                    <div class="at_details">lanti</div>
+                </div>
+            </div>
+            <div class="space cell">
+
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">72</div>
+                    <div class="symbol" contenteditable="true">Hf</div>
+                    <div class="at_details">hafnium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">73</div>
+                    <div class="symbol" contenteditable="true">Ta</div>
+                    <div class="at_details">tantalum</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">74</div>
+                    <div class="symbol" contenteditable="true">W</div>
+                    <div class="at_details">tungsten</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">75</div>
+                    <div class="symbol" contenteditable="true">Re</div>
+                    <div class="at_details">rhenium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">76</div>
+                    <div class="symbol" contenteditable="true">Os</div>
+                    <div class="at_details">osmium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">77</div>
+                    <div class="symbol" contenteditable="true">Ir</div>
+                    <div class="at_details">iridium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">78</div>
+                    <div class="symbol" contenteditable="true">Pt</div>
+                    <div class="at_details">platinum</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">79</div>
+                    <div class="symbol" contenteditable="true">Au</div>
+                    <div class="at_details">gold</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">80</div>
+                    <div class="symbol">Hg</div>
+                    <div class="at_details">mercury</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">81</div>
+                    <div class="symbol" contenteditable="true">Tl</div>
+                    <div class="at_details">thallium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">82</div>
+                    <div class="symbol" contenteditable="true">Pb</div>
+                    <div class="at_details">lead</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">83</div>
+                    <div class="symbol" contenteditable="true">Bi</div>
+                    <div class="at_details">bismuth</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">84</div>
+                    <div class="symbol" contenteditable="true">Po</div>
+                    <div class="at_details">polonium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">85</div>
+                    <div class="symbol" contenteditable="true">At</div>
+                    <div class="at_details">astatine</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">86</div>
+                    <div class="symbol" contenteditable="true">Rn</div>
+                    <div class="at_details">radon</div>
+                </div>
+            </div>
+        </div>
+        <div class="periodic-row">
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">87</div>
+                    <div class="symbol" contenteditable="true">Fr</div>
+                    <div class="at_details">francium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">88</div>
+                    <div class="symbol" contenteditable="true">Ra</div>
+                    <div class="at_details">radium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">89</div>
+                    <div class="symbol" contenteditable="true">Ac</div>
+                    <div class="at_details">Actinium</div>
+                </div>
+            </div>
+            <div class="space cell">
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">104</div>
+                    <div class="symbol" contenteditable="true">Rf</div>
+                    <div class="at_details">rutherfordium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">105</div>
+                    <div class="symbol" contenteditable="true">Db</div>
+                    <div class="at_details">dubnium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">106</div>
+                    <div class="symbol" contenteditable="true">Sg</div>
+                    <div class="at_details">seaborgium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">107</div>
+                    <div class="symbol" contenteditable="true">Bh</div>
+                    <div class="at_details">bohrium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">108</div>
+                    <div class="symbol" contenteditable="true">Hs</div>
+                    <div class="at_details">hassium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">109</div>
+                    <div class="symbol" contenteditable="true">Mt</div>
+                    <div class="at_details">meitnerium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">110</div>
+                    <div class="symbol" contenteditable="true">Ds</div>
+                    <div class="at_details">darmstadtium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">111</div>
+                    <div class="symbol" contenteditable="true">Rg</div>
+                    <div class="at_details">roentgenium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">112</div>
+                    <div class="symbol" contenteditable="true">Cn</div>
+                    <div class="at_details">copernicium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">113</div>
+                    <div class="symbol" contenteditable="true">Nh</div>
+                    <div class="at_details">
+                        unundivium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">114</div>
+                    <div class="symbol" contenteditable="true">Fl</div>
+                    <div class="at_details">flerovium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">115</div>
+                    <div class="symbol">Mc</div>
+                    <div class="at_details">ununpentium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">116</div>
+                    <div class="symbol" contenteditable="true">Lv</div>
+                    <div class="at_details">livermorium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">117</div>
+                    <div class="symbol" contenteditable="true">Ts</div>
+                    <div class="at_details">ununseptium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">118</div>
+                    <div class="symbol" contenteditable="true">Og</div>
+                    <div class="at_details">ununoctium</div>
+                </div>
+            </div>
+        </div>
+        <div class="periodic-row"></div>
+        <div class="periodic-row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="space cell">
+            </div>
+
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">58</div>
+                    <div class="symbol" contenteditable="true">Ce</div>
+                    <div class="at_details">cerium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">59</div>
+                    <div class="symbol" contenteditable="true">Pr</div>
+                    <div class="at_details">praseodymium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">60</div>
+                    <div class="symbol" contenteditable="true">Nd</div>
+                    <div class="at_details">neodymium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">61</div>
+                    <div class="symbol" contenteditable="true">Pm</div>
+                    <div class="at_details">promethium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">62</div>
+                    <div class="symbol" contenteditable="true">Sm</div>
+                    <div class="at_details">samarium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">63</div>
+                    <div class="symbol" contenteditable="true">Eu</div>
+                    <div class="at_details">europium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">64</div>
+                    <div class="symbol" contenteditable="true">Gd</div>
+                    <div class="at_details">gadolinium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">65</div>
+                    <div class="symbol" contenteditable="true">Tb</div>
+                    <div class="at_details">terbium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">66</div>
+                    <div class="symbol" contenteditable="true">Dy</div>
+                    <div class="at_details">dysprosium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">67</div>
+                    <div class="symbol" contenteditable="true">Ho</div>
+                    <div class="at_details">holmium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">68</div>
+                    <div class="symbol" contenteditable="true">Er</div>
+                    <div class="at_details">erbium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">69</div>
+                    <div class="symbol" contenteditable="true">Tm</div>
+                    <div class="at_details">thulium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">70</div>
+                    <div class="symbol" contenteditable="true">Yb</div>
+                    <div class="at_details">ytterbium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">71</div>
+                    <div class="symbol" contenteditable="true">Lu</div>
+                    <div class="at_details">lutetium</div>
+                </div>
+            </div>
+            <div class="cell"></div>
+        </div>
+        <div class="periodic-row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="space cell">
+            </div>
+
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">90</div>
+                    <div class="symbol" contenteditable="true">Th</div>
+                    <div class="at_details">thorium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">91</div>
+                    <div class="symbol" contenteditable="true">Pa</div>
+                    <div class="at_details">protactinium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">92</div>
+                    <div class="symbol" contenteditable="true">U</div>
+                    <div class="at_details">uranium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">93</div>
+                    <div class="symbol" contenteditable="true">Np</div>
+                    <div class="at_details">neptunium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">94</div>
+                    <div class="symbol" contenteditable="true">Pu</div>
+                    <div class="at_details">plutonium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">95</div>
+                    <div class="symbol" contenteditable="true">Am</div>
+                    <div class="at_details">americium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">96</div>
+                    <div class="symbol" contenteditable="true">Cm</div>
+                    <div class="at_details">curium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">97</div>
+                    <div class="symbol" contenteditable="true">Bk</div>
+                    <div class="at_details">berkelium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">98</div>
+                    <div class="symbol" contenteditable="true">Cf</div>
+                    <div class="at_details">californium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">99</div>
+                    <div class="symbol" contenteditable="true">Es</div>
+                    <div class="at_details">einsteinium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">100</div>
+                    <div class="symbol" contenteditable="true">Fm</div>
+                    <div class="at_details">fermium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">101</div>
+                    <div class="symbol" contenteditable="true">Md</div>
+                    <div class="at_details">mendelevium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">102</div>
+                    <div class="symbol" contenteditable="true">No</div>
+                    <div class="at_details">nobelium</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="element">
+                    <div class="at_num">103</div>
+                    <div class="symbol" contenteditable="true">Lr</div>
+                    <div class="at_details">lawrencium</div>
+                </div>
+            </div>
+            <div class="cell"></div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <!-- ---- Colors ----- -->
+    <div class="row">
+        <div class="items">
+            <span class="dot dot-blue"></span>
+            <p> Alkali metals</p>
+        </div>
+        <div class="items">
+            <span class="dot dot-red"></span>
+            <p> Alkaline earth metals</p>
+        </div>
+        <div class="items">
+            <span class="dot dot-purple"></span>
+            <p> Transition metals</p>
+        </div>
+        <div class="items">
+            <span class="dot dot-green"></span>
+            <p> Post-transition metals</p>
+        </div>
+
+    </div>
+    <hr>
+</body>
+
+</html>
+
+</html>
+
+</html>
+
+</html>

@@ -1,0 +1,474 @@
+html {
+    background-repeat: no-repeat;
+    background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?t=st=1672660242~exp=1672660842~hmac=5f03528…);
+    background-size: cover;
+}
+
+body {
+    font-family: Arial;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    /* --- Container --- */
+    width: 90%;
+    margin: 0 auto;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+span {
+    margin-right: 20px;
+    margin-bottom: 8px;
+}
+
+.dot-blue {
+    border: 2px solid rgb(71, 135, 240);
+    background-color: rgb(39, 243, 243);
+}
+
+.dot-red {
+    border: 2px solid red;
+    background-color: rgb(244, 200, 176);
+}
+
+.dot-purple {
+    border: 2px solid rgb(91, 26, 130);
+    background-color: rgb(171, 32, 252);
+}
+
+.dot-green {
+    border: 2px solid rgb(19, 91, 11);
+    background-color: rgb(28, 168, 13);
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+
+.periodic {
+    position: relative;
+    height: 200px;
+    margin-right: -1px;
+    text-shadow: none;
+}
+
+.periodic-row {
+    clear: both;
+    height: 10%;
+}
+
+.cell {
+    float: left;
+    position: relative;
+    width: 5.41%;
+    height: 100%;
+}
+
+.space {
+    width: 2.5%;
+}
+
+.element {
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    bottom: 1px;
+    right: 1px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    cursor: default;
+    /* pointer-events: none; */
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+    background-color: rgb(201, 200, 230);
+}
+
+.at_num,
+.at_details {
+    position: absolute;
+    font-size: 4px;
+    color: rgba(12, 57, 141, 0.9);
+    opacity: 0;
+}
+
+.at_num {
+    top: 4px;
+    left: 5px;
+}
+
+.symbol {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    margin-top: -4px;
+    font-size: 9px;
+    line-height: 1;
+    height: 9px;
+    color: rgba(12, 57, 141, 0.9);
+    font-weight: bold;
+}
+
+.at_details {
+    bottom: 4px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgba(12, 57, 141, 0.9);
+}
+/* ----------------- Start Green Element  --------------- */
+/* ------------------------------------------------------ */
+
+.periodic-row:nth-child(3) .cell:nth-child(n+14) .element,
+.periodic-row:nth-child(4) .cell:nth-child(n+14) .element,
+.periodic-row:nth-child(5) .cell:nth-child(n+14) .element,
+.periodic-row:nth-child(5) .cell:nth-child(n+15) .element,
+.periodic-row:nth-child(6) .cell:nth-child(n+14) .element {
+    background-color: #C5E7D5;
+}
+
+.periodic-row:nth-child(3) .cell:nth-child(n+14) .at_num,
+.periodic-row:nth-child(4) .cell:nth-child(n+14) .at_num,
+.periodic-row:nth-child(5) .cell:nth-child(n+14) .at_num,
+.periodic-row:nth-child(5) .cell:nth-child(n+15) .at_num,
+.periodic-row:nth-child(6) .cell:nth-child(n+14) .at_num {
+    color: #021826;
+}
+
+.periodic-row:nth-child(3) .cell:nth-child(n+14) .at_details,
+.periodic-row:nth-child(4) .cell:nth-child(n+14) .at_details,
+.periodic-row:nth-child(5) .cell:nth-child(n+14) .at_details,
+.periodic-row:nth-child(5) .cell:nth-child(n+15) .at_details,
+.periodic-row:nth-child(6) .cell:nth-child(n+14) .at_details {
+    color: #021826;
+}
+
+.periodic-row:nth-child(3) .cell:nth-child(n+14) .symbol,
+.periodic-row:nth-child(4) .cell:nth-child(n+14) .symbol,
+.periodic-row:nth-child(5) .cell:nth-child(n+14) .symbol,
+.periodic-row:nth-child(5) .cell:nth-child(n+15) .symbol,
+.periodic-row:nth-child(6) .cell:nth-child(n+14) .symbol {
+    color: #021826;
+}
+/* ------------------ End Green Element ---------------- */
+/* ------------------------------------------------------ */
+/* ----------------- Start Yellow Element --------------- */
+/* ------------------------------------------------------ */
+
+.periodic-row:nth-child(2) .cell:nth-child(n+14) .element,
+.periodic-row:nth-child(3) .cell:nth-child(n+15) .element,
+.periodic-row:nth-child(4) .cell:nth-child(n+15) .element,
+.periodic-row:nth-child(5) .cell:nth-child(n+16) .element {
+    background-color: rgba(236, 223, 48, 0.568);
+}
+
+.periodic-row:nth-child(2) .cell:nth-child(n+13) .at_num,
+.periodic-row:nth-child(3) .cell:nth-child(n+15) .at_num,
+.periodic-row:nth-child(4) .cell:nth-child(n+15) .at_num,
+.periodic-row:nth-child(5) .cell:nth-child(n+16) .at_num {
+    color: rgba(104, 89, 6, 0.63);
+}
+
+.periodic-row:nth-child(2) .cell:nth-child(n+13) .at_details,
+.periodic-row:nth-child(3) .cell:nth-child(n+15) .at_details,
+.periodic-row:nth-child(4) .cell:nth-child(n+15) .at_details,
+.periodic-row:nth-child(5) .cell:nth-child(n+16) .at_details {
+    color: rgba(104, 89, 6, 0.63);
+}
+
+.periodic-row:nth-child(2) .cell:nth-child(n+13) .symbol,
+.periodic-row:nth-child(3) .cell:nth-child(n+15) .symbol,
+.periodic-row:nth-child(4) .cell:nth-child(n+15) .symbol,
+.periodic-row:nth-child(5) .cell:nth-child(n+16) .symbol {
+    color: rgba(104, 89, 6, 0.63);
+}
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ----------------- Start Red Element  ---------------- */
+/* ------------------------------------------------------ */
+/* ---- Details ----- */
+
+.cell:nth-child(-n + 2) .at_details,
+.cell:nth-child(n + 19) .at_details {
+    color: rgb(238, 34, 61);
+}
+/* ---- Num ----- */
+
+.cell:nth-child(-n + 2) .at_num,
+.cell:nth-child(n + 19) .at_num {
+    color: rgb(238, 34, 61);
+}
+/* ---- Symbol ----- */
+
+.cell:nth-child(-n + 2) .symbol,
+.cell:nth-child(n + 19) .symbol {
+    color: rgb(238, 34, 61);
+}
+/* ---- Element ----- */
+
+.cell:nth-child(-n + 2) .element,
+.cell:nth-child(n + 19) .element {
+    background-color: rgb(247, 181, 214);
+}
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ----------------- Start blue Element  ---------------- */
+/* ------------------------------------------------------ */
+
+.cell:nth-child(1) .at_details,
+.periodic-row:nth-child(2) .cell:nth-child(n + 15) .at_details,
+.periodic-row:nth-child(3) .cell:nth-child(n + 16) .at_details,
+.periodic-row:nth-child(4) .cell:nth-child(n + 17) .at_details,
+.periodic-row:nth-child(5) .cell:nth-child(n + 18) .at_details {
+    color: rgb(19, 48, 143);
+}
+
+.cell:nth-child(1) .at_num,
+.periodic-row:nth-child(2) .cell:nth-child(n + 15) .at_num,
+.periodic-row:nth-child(3) .cell:nth-child(n + 16) .at_num,
+.periodic-row:nth-child(4) .cell:nth-child(n + 17) .at_num,
+.periodic-row:nth-child(5) .cell:nth-child(n + 18) .at_num {
+    color: rgb(19, 48, 143);
+}
+
+.cell:nth-child(1) .symbol,
+.periodic-row:nth-child(2) .cell:nth-child(n + 15) .symbol,
+.periodic-row:nth-child(3) .cell:nth-child(n + 16) .symbol,
+.periodic-row:nth-child(4) .cell:nth-child(n + 17) .symbol,
+.periodic-row:nth-child(5) .cell:nth-child(n + 18) .symbol {
+    color: rgb(19, 48, 143);
+}
+
+.cell:nth-child(1) .element,
+.periodic-row:nth-child(2) .cell:nth-child(n + 15) .element,
+.periodic-row:nth-child(3) .cell:nth-child(n + 16) .element,
+.periodic-row:nth-child(4) .cell:nth-child(n + 17) .element,
+.periodic-row:nth-child(5) .cell:nth-child(n + 18) .element {
+    background-color: #ccedf9;
+}
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------- Start blue & red Element  -------------- */
+/* ------------------------------------------------------ */
+
+.periodic-row:nth-child(-n + 6) .cell:nth-child(19) .at_details {
+    color: rgb(238, 34, 136);
+}
+
+.periodic-row:nth-child(-n + 6) .cell:nth-child(19) .at_num {
+    color: rgb(238, 34, 136);
+}
+
+.periodic-row:nth-child(-n + 6) .cell:nth-child(19) .symbol {
+    color: rgb(238, 34, 136);
+}
+
+.periodic-row:nth-child(-n + 6) .cell:nth-child(19) .element {
+    background-color: rgb(247, 181, 214);
+}
+
+.periodic-row:nth-child(9) .cell:nth-child(n+3) .at_details,
+.periodic-row:nth-child(10) .cell:nth-child(n+3) .at_details {
+    color: rgb(13, 8, 66);
+}
+
+.periodic-row:nth-child(9) .cell:nth-child(n+3) .at_num,
+.periodic-row:nth-child(10) .cell:nth-child(n+3) .at_num {
+    color: rgb(13, 8, 66);
+}
+
+.periodic-row:nth-child(9) .cell:nth-child(n+3) .symbol,
+.periodic-row:nth-child(10) .cell:nth-child(n+3) .symbol {
+    color: rgb(13, 8, 66);
+}
+
+.periodic-row:nth-child(9) .cell:nth-child(n+3) .element {
+    background-color: #93f8f8;
+}
+/* ------------- Start grey Element  -------------- */
+/* ------------------------------------------ */
+
+.periodic-row:nth-child(7) .cell:nth-child(n+10) .element {
+    background-color: rgba(179, 175, 175, 0.363);
+}
+
+.periodic-row:nth-child(2) .cell:nth-child(n+13) .at_details,
+.periodic-row:nth-child(7) .cell:nth-child(n+10) .at_details {
+    color: rgb(61, 61, 61);
+}
+
+.periodic-row:nth-child(7) .cell:nth-child(n+9) .at_num,
+.periodic-row:nth-child(7) .cell:nth-child(n+10) .at_num {
+    color: rgb(61, 61, 61);
+}
+
+.periodic-row:nth-child(7) .cell:nth-child(n+10) .symbol {
+    color: rgb(61, 61, 61);
+}
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/* ------------- Start Orange Element  -------------- */
+/* -------------------------------------------------- */
+
+.periodic-row:nth-child(10) .cell:nth-child(n+3) .element {
+    background-color: #fbc490;
+}
+
+.periodic-row:nth-child(10) .cell:nth-child(n+3) .at_num {
+    color: rgb(233, 108, 5);
+}
+
+.periodic-row:nth-child(10) .cell:nth-child(n+3) .symbol {
+    color: rgb(233, 108, 5);
+}
+
+.periodic-row:nth-child(10) .cell:nth-child(n+3) .at_details {
+    color: rgb(233, 108, 5);
+}
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+
+.cell:nth-child(1) .element {
+    -webkit-transform-origin: 0 50%;
+    -ms-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+}
+
+.cell:nth-child(18) .element {
+    -webkit-transform-origin: 100% 50%;
+    -ms-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+}
+
+.periodic-row:nth-child(10) .cell .element {
+    -webkit-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+
+.periodic-row:nth-child(1) .cell:nth-child(1) .element {
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.periodic-row:nth-child(1) .cell:nth-child(18) .element {
+    -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+}
+
+.periodic-row:nth-child(10) .cell:nth-child(18) .element {
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+/* -------------  *** Responsive ***  -------------- */
+/* -------------------------------------------------- */
+
+@media (min-width: 600px) {
+    /* body {
+        background-color: rgb(10, 10, 10)!important;
+    } */
+    .row {
+        display: flex !important;
+        flex-direction: column!important;
+    }
+    .periodic {
+        height: 460px;
+        margin-right: -2px;
+    }
+    .element {
+        right: 2px;
+        bottom: 2px;
+    }
+    .at_num,
+    .at_details {
+        font-size: 4px;
+        opacity: 1;
+    }
+    .symbol {
+        margin-top: -17px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 30px;
+        height: 30px;
+        text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+}
+
+@media (min-width: 800px) {
+    /* body {
+        background-color: yellow!important;
+    } */
+    .row {
+        display: flex !important;
+        flex-direction: column!important;
+    }
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+    .periodic {
+        height: 540px;
+    }
+    .symbol {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    /* body {
+        background-color: red!important;
+    } */
+    .row {
+        display: flex !important;
+        flex-direction: row!important;
+    }
+    .periodic {
+        height: 680px;
+    }
+    .at_num,
+    .at_details {
+        font-size: 5px;
+    }
+    .symbol {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* body {
+        background-color: blue!important;
+    } */
+    .periodic {
+        height: 800px;
+    }
+    .at_num {
+        font-size: 14px;
+    }
+    .at_details {
+        font-size: 12px;
+    }
+    .symbol {
+        font-size: 25px;
+    }
+}
